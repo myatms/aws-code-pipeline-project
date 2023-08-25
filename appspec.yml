@@ -16,9 +16,9 @@ Resources:
             SecurityGroups: ["sg-0eee7a7fbe3a54790"]
             AssignPublicIp: "ENABLED"
 # https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-ecs
-Hooks:
-  - BeforeInstall: "BeforeInstallHookLambdaFunctionName"
-  - AfterInstall: "AfterInstallHookLambdaFunctionName"
-  - AfterAllowTestTraffic: "AfterAllowTestTrafficHookLambdaFunctionName"
-  - BeforeAllowTraffic: "SanityTestHookLambdaFunctionName"
-  - AfterAllowTraffic: "ValidationTestHookLambdaFunctionName"
+#Hooks:
+#  - BeforeInstall: "BeforeInstallHookLambdaFunctionName"
+#  - AfterInstall: "AfterInstallHookLambdaFunctionName"
+#  - AfterAllowTestTraffic: "AfterAllowTestTrafficHookLambdaFunctionName"
+#  - BeforeAllowTraffic: "SanityTestHookLambdaFunctionName"
+#  - AfterAllowTraffic: "ValidationTestHookLambdaFunctionName"
