@@ -4,7 +4,7 @@ Resources:
       Type: AWS::ECS::Service
       Properties:
         #TaskDefinition: "arn:aws:ecs:ap-southeast-1:99999999999999:task-definition/NewMathServiceTask:2"
-        TaskDefinition: <TASK_DEFINITION>
+        TaskDefinition: "arn:aws:ecs:ap-southeast-1:652089208055:task-definition/web-ec2-task:1"
         LoadBalancerInfo:
-          ContainerName: ""
+          ContainerName: "web"
           ContainerPort: 80
