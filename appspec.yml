@@ -1,10 +1,24 @@
+# https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file.html#appspec-reference-ecs
 version: 0.0
+# https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html#reference-appspec-file-structure-resources-ecs
 Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        #TaskDefinition: "arn:aws:ecs:ap-southeast-1:99999999999999:task-definition/NewMathServiceTask:2"
         TaskDefinition: "arn:aws:ecs:ap-southeast-1:652089208055:task-definition/web-ec2-task:1"
         LoadBalancerInfo:
           ContainerName: "web"
           ContainerPort: 80
+        PlatformVersion: "LATEST"
+        NetworkConfiguration:
+          AwsvpcConfiguration:
+            Subnets: ["subnet-0d5348b4cdddd00b7","subnet-0c1ee6da2b5f86fb1"]
+            SecurityGroups: ["sg-0eee7a7fbe3a54790"]
+            AssignPublicIp: "ENABLED"
+# https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-ecs
+Hooks:
+  - BeforeInstall: "BeforeInstallHookLambdaFunctionName"
+  - AfterInstall: "AfterInstallHookLambdaFunctionName"
+  - AfterAllowTestTraffic: "AfterAllowTestTrafficHookLambdaFunctionName"
+  - BeforeAllowTraffic: "SanityTestHookLambdaFunctionName"
+  - AfterAllowTraffic: "ValidationTestHookLambdaFunctionName"
